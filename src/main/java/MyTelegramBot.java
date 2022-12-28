@@ -1,17 +1,21 @@
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
+import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 
 public class MyTelegramBot extends TelegramLongPollingBot {
 
-    public final static String BOT_TOKEN = "5688770042:AAHHiyFBlgg72vvP-lVm4pOQhWvhVTJ4OEc";
-    public final static String BOT_USERNAME = "APNetologyNasaPic_Bot";
-    public final static String URI = "https://api.nasa.gov/planetary/apod?api_key=5gUp38zK78e8gDBK7dlJGlgzejcSPubyjC4xiVFC";
+    public final static String BOT_TOKEN = "tokem";
+    public final static String BOT_USERNAME = "name";
+    public final static String URI = "uri";
     public static long chatId;
 
     public MyTelegramBot() throws TelegramApiException {
@@ -36,7 +40,8 @@ public class MyTelegramBot extends TelegramLongPollingBot {
             switch (update.getMessage().getText()) {
                 case "/help":
                     sendMessage("Привет, я бот NASA. Я высылаю картинки по запросу. " +
-                            "Напоминаю, что картинки на сайте NASA обновляются каждые сутки");
+                            "Напоминаю, что картинки на сайте NASA обновляются каждые сутки. " +
+                            "Принимаемые запросы: /give, /help, /pic");
                     break;
                 case "/give":
                     try {
@@ -45,8 +50,13 @@ public class MyTelegramBot extends TelegramLongPollingBot {
                         e.printStackTrace();
                     }
                     break;
+                case "/start":
+                    sendMessage("Введите /help для помощи или /give для получения картинки");
+                    break;
+                case "/pic":
+                    break;
                 default:
-                    sendMessage("Моя твоя не понимать. Отправь /help или /give, " +
+                    sendMessage("Моя твоя не понимать. Отправь /help, /give или /pic, " +
                             "всё просто, не надо пока усложнять :-)");
                     break;
             }
