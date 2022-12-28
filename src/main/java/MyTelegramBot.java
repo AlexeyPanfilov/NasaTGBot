@@ -50,7 +50,7 @@ public class MyTelegramBot extends TelegramLongPollingBot {
                     sendMessage("Введите /help для помощи или /give для получения картинки");
                     break;
                 default:
-                    sendMessage("Моя твоя не понимать. Отправь /help, /give или /pic, " +
+                    sendMessage("Моя твоя не понимать. Отправь /help, /give, " +
                             "всё просто, не надо пока усложнять :-)");
                     break;
             }
