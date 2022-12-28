@@ -1,14 +1,10 @@
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
-import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 
 public class MyTelegramBot extends TelegramLongPollingBot {
@@ -41,7 +37,7 @@ public class MyTelegramBot extends TelegramLongPollingBot {
                 case "/help":
                     sendMessage("Привет, я бот NASA. Я высылаю картинки по запросу. " +
                             "Напоминаю, что картинки на сайте NASA обновляются каждые сутки. " +
-                            "Принимаемые запросы: /give, /help, /pic");
+                            "Принимаемые запросы: /give, /help");
                     break;
                 case "/give":
                     try {
@@ -52,8 +48,6 @@ public class MyTelegramBot extends TelegramLongPollingBot {
                     break;
                 case "/start":
                     sendMessage("Введите /help для помощи или /give для получения картинки");
-                    break;
-                case "/pic":
                     break;
                 default:
                     sendMessage("Моя твоя не понимать. Отправь /help, /give или /pic, " +
